@@ -9,15 +9,15 @@ public class Sessao {
   
   private DAOUsuario daoUsuario = DAOFactory.createDAOUsuario();
   
-  private Usuario usuario;
+  private Usuario usuario = null;
   private boolean logado = false;
   private Integer papel = 0;
   
-  public void alterarSituacao() {
-    daoUsuario.alterarSituacao(usuario.getId(), usuario.getSituacao());
+  public void alterarSituacao(Integer situacao) {
+    daoUsuario.alterarSituacao(usuario.getId(), situacao);
   }
   
-  public boolean verificarLogin(String email, String senha) {
+  public boolean login(String email, String senha) {
     TBUsuario tbUsuario = daoUsuario.verificarLog(email, senha);
     if (tbUsuario != null) {
       if (tbUsuario.getSituacao() == 2) {

@@ -1,8 +1,8 @@
-package control;
+package controller.util;
 
 import java.awt.event.ActionListener;
 
-public abstract class Controller {
+public abstract class ControllerGeneric {
   
   private ActionListener actionListener;
 

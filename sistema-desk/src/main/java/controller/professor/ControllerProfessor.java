@@ -1,25 +1,25 @@
-package control.professor;
+package controller.professor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import control.Controller;
+import controller.util.ControllerGeneric;
 import model.entidades.Professor;
 import model.rn.RNProfessor;
-import view.professor.CadastrarProfessor;
-import view.professor.EditarProfessor;
+import view.professor.ViewCadastrarProfessor;
+import view.professor.ViewEditarProfessor;
 
-public class CTProfessor extends Controller {
+public class ControllerProfessor extends ControllerGeneric {
 
   private RNProfessor rnProf = new RNProfessor();
   private Professor prof = new Professor();
   
-  private CadastrarProfessor p1;
-  private EditarProfessor p2;
+  private ViewCadastrarProfessor p1;
+  private ViewEditarProfessor p2;
   
-  public CTProfessor() {
+  public ControllerProfessor() {
     createActionListener();
   }
 
@@ -69,11 +69,11 @@ public class CTProfessor extends Controller {
     prof = new Professor();
   }
 
-  public void setP1(CadastrarProfessor p1) {
+  public void setP1(ViewCadastrarProfessor p1) {
     this.p1 = p1;
   }
 
-  public void setP2(EditarProfessor p2) {
+  public void setP2(ViewEditarProfessor p2) {
     this.p2 = p2;
   }
 }
