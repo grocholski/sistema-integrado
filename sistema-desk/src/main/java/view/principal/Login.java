@@ -19,13 +19,14 @@ public class Login extends JDialog {
 
   private static final long serialVersionUID = 1L;
   
-  private final JDesktopPane contentPane;
   private JTextField emailField;
   private JTextField senhaField;
 
-  public Login(VWPrincipal frame) {
+  public Login(WindowMain frame) {
     super(frame);
     setBounds(300, 300, 341, 221);
+    
+    JDesktopPane contentPane;
     contentPane = new JDesktopPane();
     contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
     contentPane.setLayout(null);
@@ -54,14 +55,25 @@ public class Login extends JDialog {
       
       @Override
       public void actionPerformed(ActionEvent e) {
-        if (frame.sessao.verificarLogin(emailField.getText(), senhaField.getText())) {
-          if (frame.sessao.getPapel() == 1) {
-            frame.menuBar.getMenu(2).setEnabled(true); // menu administrador
+        if (frame.sessao.login(emailField.getText(), senhaField.getText())) {
+          
+          switch (frame.sessao.getPapel()) {
+            case 1: // adm
+              frame.getJMenuBar().getMenu(2).setEnabled(true);
+              break;
+            case 3: // prof
+              frame.getJMenuBar().getMenu(4).setEnabled(true);
+              break;
+            case 4: // aval
+              frame.getJMenuBar().getMenu(3).setEnabled(true);
+            default:
+              break;
           }
-          frame.menuBar.getMenu(1).setEnabled(true); // menu conta
-          frame.menuBar.getMenu(0).getItem(1).setEnabled(false); // menu item login
-          frame.menuBar.getMenu(0).getItem(2).setEnabled(true); // menu item logout
-          frame.l.dispose();
+          
+          frame.getJMenuBar().getMenu(1).setEnabled(true); // menu conta
+          frame.getJMenuBar().getMenu(0).getItem(1).setEnabled(false); // menu-item login
+          frame.getJMenuBar().getMenu(0).getItem(2).setEnabled(true); // menu-item logout
+          frame.login.dispose();   
         }
       }
     });

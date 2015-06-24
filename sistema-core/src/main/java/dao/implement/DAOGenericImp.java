@@ -89,16 +89,20 @@ public class DAOGenericImp<T> implements DAOGeneric<T> {
   @Override
   public void alterarSituacao(Integer pk, Integer situacao) {
     try {
-      String jpql = "UPDATE " + classe.getSimpleName() + "SET situacao=? WHERE idusuario=?";
+      String jpql = "UPDATE " + classe.getSimpleName() + " u SET "
+          + "u.situacao = :situacao WHERE u.idusuario = :idusuario";
       
       manager = factory.createEntityManager();
-      Query query = manager.createQuery(jpql, classe);
+      manager.getTransaction().begin();
+      Query query = manager.createQuery(jpql);
       query.setParameter("situacao", situacao);
       query.setParameter("idusuario", pk);
       query.executeUpdate();
+      manager.getTransaction().commit();
       
     } catch (RuntimeException e) {
-      
+      manager.getTransaction().rollback();
+      e.printStackTrace();
     } finally {
       manager.close();
     }
