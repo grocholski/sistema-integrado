@@ -109,7 +109,7 @@ public class Conversor {
   public static Aluno toAluno(TBAluno tbAl) {
     Aluno al = new Aluno();
     
-    al.setIdaluno(tbAl.getIdusuario());
+    al.setId(tbAl.getIdusuario());
     al.setNome(tbAl.getNome());
     al.setEmail(tbAl.getUsuario().getEmail());
     al.setPapel(tbAl.getUsuario().getPapel());
@@ -125,9 +125,9 @@ public class Conversor {
   public static TBAluno toTBAluno(Aluno tbAl) {
     TBAluno al = new TBAluno();
     
-    if (tbAl.getIdaluno() != null) {
-      al.setIdusuario(tbAl.getIdaluno());
-      al.getUsuario().setIdusuario(tbAl.getIdaluno());
+    if (tbAl.getId() != null) {
+      al.setIdusuario(tbAl.getId());
+      al.getUsuario().setIdusuario(tbAl.getId());
     }
     al.setNome(tbAl.getNome());
     al.getUsuario().setEmail(tbAl.getEmail());
@@ -144,7 +144,7 @@ public class Conversor {
   public static Avaliador toAvaliador(TBAvaliador tbAl) {
     Avaliador al = new Avaliador();
     
-    al.setIdavaliador(tbAl.getIdusuario());
+    al.setId(tbAl.getIdusuario());
     al.setNome(tbAl.getNome());
     al.setEmail(tbAl.getUsuario().getEmail());
     al.setPapel(tbAl.getUsuario().getPapel());
@@ -159,9 +159,9 @@ public class Conversor {
   public static TBAvaliador toTBAvaliador(Avaliador tbAl) {
     TBAvaliador al = new TBAvaliador();
     
-    if (tbAl.getIdavaliador() != null) {
-      al.setIdusuario(tbAl.getIdavaliador());
-      al.getUsuario().setIdusuario(tbAl.getIdavaliador());
+    if (tbAl.getId() != null) {
+      al.setIdusuario(tbAl.getId());
+      al.getUsuario().setIdusuario(tbAl.getId());
     }
     al.setNome(tbAl.getNome());
     al.getUsuario().setEmail(tbAl.getEmail());

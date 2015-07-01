@@ -6,12 +6,19 @@ import dao.tabelas.TBProjeto;
 
 public interface DAOProjeto extends DAOGeneric<TBProjeto> {
 
+	// retorna projeto + respostas
+	public List<TBProjeto> buscarPorAlunoMembro(Integer idaluno);
+	
   // modificar este???????????
   public List<TBProjeto> buscarPorSituacao(Integer s);
   
   // modificar este???????????
   // passar TBAvaliador (objeto)?????
   public List<TBProjeto> buscarPorAvaliador(Integer idavaliador);
+  
+  // buscar projetos por avalidor e situacao
+  // retorna projeto + respostas + avaliacao
+  public List<TBProjeto> buscarProjetoPorAvaliador(Integer id, Integer situacao);
   
   // buscar projeto ponto de vista: aluno
   // retorna: projeto + membros + respostas + comentarios

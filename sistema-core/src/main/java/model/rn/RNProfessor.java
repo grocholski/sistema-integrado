@@ -10,7 +10,7 @@ public class RNProfessor {
 
   private DAOProfessor daoProf = DAOFactory.createDAOProfessor();
   
-  public void salvar(Professor prof) throws RuntimeException {
+  public void salvar(Professor prof) {
     TBProfessor tbProf = Conversor.toTBProfessor(prof);
     daoProf.salvar(tbProf);
   }
@@ -19,8 +19,4 @@ public class RNProfessor {
     TBProfessor tbProf = Conversor.toTBProfessor(prof);
     daoProf.alterar(tbProf);
   }
-  
-//  public void alterarSituacao(Professor prof) {
-//    daoProf.alterarSituacao(prof.getId(), prof.getSituacao());
-//  }
 }

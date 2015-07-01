@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import model.util.Sessao;
 import view.professor.ViewCadastrarProfessor;
-import view.professor.ViewEditarProfessor;
+import view.professor.ViewAtualizarProfessor;
 import controller.util.ControllerFactory;
 import controller.util.ControllerGeneric;
 
@@ -100,7 +100,7 @@ public class WindowMain extends JFrame {
     JPanel panel1 = new JPanel();
     contentPane.add(panel1, "panel1");
     
-    ViewEditarProfessor panel2 = new ViewEditarProfessor(sessao);
+    ViewAtualizarProfessor panel2 = new ViewAtualizarProfessor(sessao);
     contentPane.add(panel2, "panel2");
     
   }

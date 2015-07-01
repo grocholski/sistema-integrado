@@ -49,7 +49,7 @@ public class TBProjeto {
   private List<TBAluno> membros = new ArrayList<TBAluno>();
   
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.projeto", cascade=CascadeType.ALL)
-  private List<TBAvaliaProjeto> avaliaProjeto = new ArrayList<TBAvaliaProjeto>();
+  private List<TBAvaliaProjeto> avaliaprojeto = new ArrayList<TBAvaliaProjeto>();
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "projeto")
   private List<TBResposta> respostas = new ArrayList<TBResposta>();
@@ -114,11 +114,11 @@ public class TBProjeto {
   }
 
   public List<TBAvaliaProjeto> getAvaliaProjeto() {
-    return avaliaProjeto;
+    return avaliaprojeto;
   }
 
   public void setAvaliaProjeto(List<TBAvaliaProjeto> avaliaProjeto) {
-    this.avaliaProjeto = avaliaProjeto;
+    this.avaliaprojeto = avaliaProjeto;
   }
 
   public List<TBResposta> getRespostas() {
@@ -142,7 +142,7 @@ public class TBProjeto {
     final int prime = 31;
     int result = 1;
     result = prime * result
-        + ((avaliaProjeto == null) ? 0 : avaliaProjeto.hashCode());
+        + ((avaliaprojeto == null) ? 0 : avaliaprojeto.hashCode());
     result = prime * result
         + ((comentarios == null) ? 0 : comentarios.hashCode());
     result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
@@ -166,10 +166,10 @@ public class TBProjeto {
     if (getClass() != obj.getClass())
       return false;
     TBProjeto other = (TBProjeto) obj;
-    if (avaliaProjeto == null) {
-      if (other.avaliaProjeto != null)
+    if (avaliaprojeto == null) {
+      if (other.avaliaprojeto != null)
         return false;
-    } else if (!avaliaProjeto.equals(other.avaliaProjeto))
+    } else if (!avaliaprojeto.equals(other.avaliaprojeto))
       return false;
     if (comentarios == null) {
       if (other.comentarios != null)

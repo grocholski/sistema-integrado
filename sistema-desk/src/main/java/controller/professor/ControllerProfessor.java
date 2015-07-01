@@ -9,7 +9,7 @@ import controller.util.ControllerGeneric;
 import model.entidades.Professor;
 import model.rn.RNProfessor;
 import view.professor.ViewCadastrarProfessor;
-import view.professor.ViewEditarProfessor;
+import view.professor.ViewAtualizarProfessor;
 
 public class ControllerProfessor extends ControllerGeneric {
 
@@ -17,7 +17,7 @@ public class ControllerProfessor extends ControllerGeneric {
   private Professor prof = new Professor();
   
   private ViewCadastrarProfessor p1;
-  private ViewEditarProfessor p2;
+  private ViewAtualizarProfessor p2;
   
   public ControllerProfessor() {
     createActionListener();
@@ -33,8 +33,8 @@ public class ControllerProfessor extends ControllerGeneric {
           cadastrar();
           p1.dispose();
           break;
-        case "Salvar":
-          editar();
+        case "Salvar"://atualizar
+          atualizar();
           break;
         } 
       }
@@ -55,7 +55,7 @@ public class ControllerProfessor extends ControllerGeneric {
     prof = new Professor();
   }
   
-  private void editar() {
+  private void atualizar() {
     prof.setId(p2.sessao.getUsuario().getId());
     prof.setNome(p2.getNomeField().getText());
     prof.setEmail(p2.getEmailField().getText());
@@ -73,7 +73,7 @@ public class ControllerProfessor extends ControllerGeneric {
     this.p1 = p1;
   }
 
-  public void setP2(ViewEditarProfessor p2) {
+  public void setP2(ViewAtualizarProfessor p2) {
     this.p2 = p2;
   }
 }

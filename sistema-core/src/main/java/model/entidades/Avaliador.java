@@ -5,6 +5,10 @@ public class Avaliador extends Usuario {
   private String atuacao;
   
   private String formacao;
+  
+  public Avaliador() {
+  	super();
+  }
 
   public String getAtuacao() {
     return atuacao;

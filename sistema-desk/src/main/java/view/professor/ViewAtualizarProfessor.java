@@ -12,7 +12,7 @@ import controller.professor.ControllerProfessor;
 import controller.util.ControllerFactory;
 import model.util.Sessao;
 
-public class ViewEditarProfessor extends JPanel {
+public class ViewAtualizarProfessor extends JPanel {
 
   private static final long serialVersionUID = 1L;
   private JTextField departField;
@@ -24,7 +24,7 @@ public class ViewEditarProfessor extends JPanel {
   private ControllerProfessor cp;
   public Sessao sessao;
 
-  public ViewEditarProfessor(Sessao sessao) {
+  public ViewAtualizarProfessor(Sessao sessao) {
     this.sessao = sessao;
     cp = ControllerFactory.createControllerProfessor(this);
     
