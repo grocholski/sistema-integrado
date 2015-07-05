@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Novo Projeto</title>
+  </h:head>
+  
+  <h:body>
+    
+  <h:form>
+    <h:outputLabel value="Título">
+      <h:inputText value="#{controller.projeto.titulo}"/></h:outputLabel><br/>
+    
+    <h:outputLabel value="Descrição">
+      <h:inputText value="#{controller.projeto.descricao}"/></h:outputLabel><br/>
+    
+    <h:outputLabel value="Novo Membro">
+      <h:inputText id="alunoEmail" value="#{controller.alunoEmail}"/></h:outputLabel>
+    <h:commandButton value="Adicionar" type="reset">
+      <f:ajax execute="alunoEmail" render="tableMembros" listener="#{controller.buscaAluno}"/>
+    </h:commandButton><br/>
+    
+    <h:dataTable id="tableMembros" value="#{controller.membros}" var="membro">
+      <h:column>            
+        <f:facet name="header">Nome</f:facet>
+        <h:outputText value="#{membro.nome}"/>
+      </h:column>
+      <h:column>
+        <f:facet name="header">Email</f:facet>
+        <h:outputText value="#{membro.email}"/>
+      </h:column>
+    </h:dataTable><br/>
+    
+    <h:outputLabel value="Orientador">
+      <h:inputText id="orientadorEmail" value="#{controller.orientadorEmail}"/></h:outputLabel>
+    <h:commandButton value="Adicionar">
+      <f:ajax execute="orientadorEmail" render="orientadorNome" listener="#{controller.buscaProfessor}"/>
+    </h:commandButton><br/>
+    <h:outputText id="orientadorNome" value="#{controller.orientador}"/><br/>
+    
+    <h:commandButton value="Finalizar" action="#{controller.cadastrar}"/>
+    
+  </h:form>
+  
+  </h:body>
+</html>
