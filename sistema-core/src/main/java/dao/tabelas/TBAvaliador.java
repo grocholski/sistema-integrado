@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -27,36 +26,23 @@ public class TBAvaliador {
   @Column(name="idusuario", unique = true, nullable = false)
   private Integer idusuario;
   
-  @Column(nullable=false)
-  private String nome;
-  
-  @Column(nullable=false)
   private String atuacao;
   
-  @Column(nullable=false)
   private String formacao;
   
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne
   @PrimaryKeyJoinColumn
   private TBUsuario usuario;
   
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.avaliador")
+  @OneToMany(mappedBy = "pk.avaliador")
   private List<TBAvaliaProjeto> projetos = new ArrayList<TBAvaliaProjeto>();
-
+  
   public Integer getIdusuario() {
     return idusuario;
   }
 
   public void setIdusuario(Integer idusuario) {
     this.idusuario = idusuario;
-  }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
   }
 
   public String getAtuacao() {
@@ -98,7 +84,6 @@ public class TBAvaliador {
     result = prime * result + ((atuacao == null) ? 0 : atuacao.hashCode());
     result = prime * result + ((formacao == null) ? 0 : formacao.hashCode());
     result = prime * result + ((idusuario == null) ? 0 : idusuario.hashCode());
-    result = prime * result + ((nome == null) ? 0 : nome.hashCode());
     result = prime * result + ((projetos == null) ? 0 : projetos.hashCode());
     result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
     return result;
@@ -127,11 +112,6 @@ public class TBAvaliador {
       if (other.idusuario != null)
         return false;
     } else if (!idusuario.equals(other.idusuario))
-      return false;
-    if (nome == null) {
-      if (other.nome != null)
-        return false;
-    } else if (!nome.equals(other.nome))
       return false;
     if (projetos == null) {
       if (other.projetos != null)

@@ -28,7 +28,6 @@ public class TBProjeto {
   @Column(nullable=false)
   private String titulo;
   
-  @Column(nullable=false)
   private String descricao;
   
   @Column(nullable=false)
@@ -42,21 +41,22 @@ public class TBProjeto {
   @JoinColumn(name = "lider", nullable = false, updatable = false)
   private TBAluno lider;
   
-  @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(name = "membro_projeto", catalog = "integrados3",
-      joinColumns = { @JoinColumn(name = "idprojeto", nullable = false, updatable = true) },
-      inverseJoinColumns = { @JoinColumn(name = "idusuario", nullable = false, updatable = true) })
+      joinColumns = { @JoinColumn(name = "idprojeto", nullable = false, updatable = false) },
+      inverseJoinColumns = { @JoinColumn(name = "idusuario", nullable = false, updatable = false) })
   private List<TBAluno> membros = new ArrayList<TBAluno>();
   
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.projeto", cascade=CascadeType.ALL)
+  @OneToMany(mappedBy = "pk.projeto", cascade=CascadeType.ALL)
   private List<TBAvaliaProjeto> avaliaprojeto = new ArrayList<TBAvaliaProjeto>();
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "projeto")
+  //mudar para eager???
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "projeto")
   private List<TBResposta> respostas = new ArrayList<TBResposta>();
   
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "projeto")
+  @OneToMany(mappedBy = "projeto")
   private List<TBComentario> comentarios = new ArrayList<TBComentario>();
-
+  
   public Integer getIdprojeto() {
     return idprojeto;
   }

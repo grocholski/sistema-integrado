@@ -25,15 +25,19 @@ public class TBUsuario implements Serializable {
 	@Column(name="idusuario", unique=true, nullable=false)
 	private Integer idusuario;
 
-  //@Column(unique = true)
+  @Column(unique = true)
 	private String email;
 	
-	//private String nome;
-
+	@Column(nullable=false)
+	private String nome;
+	
+	@Column(nullable=false)
 	private Integer papel;
 
+	@Column(nullable=false)
 	private String senha;
 
+	@Column(nullable=false)
 	private Integer situacao;
 	
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -50,9 +54,6 @@ public class TBUsuario implements Serializable {
 	
 	@OneToMany(mappedBy = "usuario")
   private List<TBComentario> comentarios = new ArrayList<TBComentario>();
-	
-	public TBUsuario() {
-	}
 
   public Integer getIdusuario() {
     return idusuario;
@@ -60,6 +61,14 @@ public class TBUsuario implements Serializable {
 
   public void setIdusuario(Integer idusuario) {
     this.idusuario = idusuario;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
   }
 
   public String getEmail() {
@@ -126,6 +135,14 @@ public class TBUsuario implements Serializable {
     this.avaliador = avaliador;
   }
 
+  public List<TBComentario> getComentarios() {
+    return comentarios;
+  }
+
+  public void setComentarios(List<TBComentario> comentarios) {
+    this.comentarios = comentarios;
+  }
+  
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -134,8 +151,11 @@ public class TBUsuario implements Serializable {
         + ((administrador == null) ? 0 : administrador.hashCode());
     result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
     result = prime * result + ((avaliador == null) ? 0 : avaliador.hashCode());
+    result = prime * result
+        + ((comentarios == null) ? 0 : comentarios.hashCode());
     result = prime * result + ((email == null) ? 0 : email.hashCode());
     result = prime * result + ((idusuario == null) ? 0 : idusuario.hashCode());
+    result = prime * result + ((nome == null) ? 0 : nome.hashCode());
     result = prime * result + ((papel == null) ? 0 : papel.hashCode());
     result = prime * result + ((professor == null) ? 0 : professor.hashCode());
     result = prime * result + ((senha == null) ? 0 : senha.hashCode());
@@ -167,6 +187,11 @@ public class TBUsuario implements Serializable {
         return false;
     } else if (!avaliador.equals(other.avaliador))
       return false;
+    if (comentarios == null) {
+      if (other.comentarios != null)
+        return false;
+    } else if (!comentarios.equals(other.comentarios))
+      return false;
     if (email == null) {
       if (other.email != null)
         return false;
@@ -176,6 +201,11 @@ public class TBUsuario implements Serializable {
       if (other.idusuario != null)
         return false;
     } else if (!idusuario.equals(other.idusuario))
+      return false;
+    if (nome == null) {
+      if (other.nome != null)
+        return false;
+    } else if (!nome.equals(other.nome))
       return false;
     if (papel == null) {
       if (other.papel != null)

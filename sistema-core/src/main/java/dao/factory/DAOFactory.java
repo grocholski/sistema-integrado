@@ -4,11 +4,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import dao.implement.DAOAdministradorImp;
+import dao.implement.DAOAlunoImp;
 import dao.implement.DAOAvaliadorImp;
 import dao.implement.DAOProfessorImp;
 import dao.implement.DAOProjetoImp;
 import dao.implement.DAOUsuarioImp;
 import dao.interfaces.DAOAdministrador;
+import dao.interfaces.DAOAluno;
 import dao.interfaces.DAOAvaliador;
 import dao.interfaces.DAOProfessor;
 import dao.interfaces.DAOProjeto;
@@ -27,6 +29,11 @@ public class DAOFactory {
   public static DAOUsuario createDAOUsuario() {
     createFactory();
     return new DAOUsuarioImp(factory);
+  }
+  
+  public static DAOAluno createDAOAluno() {
+    createFactory();
+    return new DAOAlunoImp(factory);
   }
   
   public static DAOAdministrador createDAOAdministrador() {

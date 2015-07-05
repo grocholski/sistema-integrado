@@ -27,13 +27,8 @@ public class TBProfessor {
   @Column(name="idusuario", unique = true, nullable = false)
   private Integer idusuario;
   
-  @Column(nullable=false)
-  private String nome;
-  
-  @Column(nullable=false)
   private String disciplinaPrincipal;
   
-  @Column(nullable=false)
   private String departamento;
   
   @OneToOne(cascade = CascadeType.ALL)
@@ -42,21 +37,13 @@ public class TBProfessor {
 
   @OneToMany(mappedBy = "orientador")
   private List<TBProjeto> projetos = new ArrayList<TBProjeto>();
-
+  
   public Integer getIdusuario() {
     return idusuario;
   }
 
   public void setIdusuario(Integer idusuario) {
     this.idusuario = idusuario;
-  }
-
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
   }
 
   public String getDisciplinaPrincipal() {
@@ -100,7 +87,6 @@ public class TBProfessor {
     result = prime * result
         + ((disciplinaPrincipal == null) ? 0 : disciplinaPrincipal.hashCode());
     result = prime * result + ((idusuario == null) ? 0 : idusuario.hashCode());
-    result = prime * result + ((nome == null) ? 0 : nome.hashCode());
     result = prime * result + ((projetos == null) ? 0 : projetos.hashCode());
     result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
     return result;
@@ -129,11 +115,6 @@ public class TBProfessor {
       if (other.idusuario != null)
         return false;
     } else if (!idusuario.equals(other.idusuario))
-      return false;
-    if (nome == null) {
-      if (other.nome != null)
-        return false;
-    } else if (!nome.equals(other.nome))
       return false;
     if (projetos == null) {
       if (other.projetos != null)

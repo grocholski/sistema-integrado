@@ -38,7 +38,8 @@ public class ControllerMain extends ControllerGeneric {
             // fechar programa ou destruir sessao
             break;
           
-          case "Editar professor":
+          case "Atualizar":
+            // fazer verificacao se eh professor ou avaliador
             getWindowLayout().show(w.getContentPane(), "panel2");
             break;
           

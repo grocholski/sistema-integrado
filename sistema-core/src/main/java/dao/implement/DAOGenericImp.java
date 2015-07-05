@@ -25,11 +25,12 @@ public class DAOGenericImp<T> implements DAOGeneric<T> {
       manager = factory.createEntityManager();
       manager.getTransaction().begin();
       manager.persist(obj); 
-      manager.getTransaction().commit();      
+      manager.getTransaction().commit();
       
     } catch (Exception e) {
-      manager.getTransaction().rollback();
-      throw new RuntimeException("Erro ao tentar salvar.", e);
+      e.printStackTrace();
+      //manager.getTransaction().rollback();
+      //throw new RuntimeException("Erro ao tentar salvar.", e);
     } finally {
       manager.close();
     }
@@ -44,8 +45,9 @@ public class DAOGenericImp<T> implements DAOGeneric<T> {
       manager.getTransaction().commit();
       
     } catch (Exception e) {
+      e.printStackTrace();
       manager.getTransaction().rollback();
-      throw new RuntimeException("Erro ao tentar remover.", e);
+      //throw new RuntimeException("Erro ao tentar remover.", e);
     } finally {
       manager.close();
     }
@@ -60,8 +62,9 @@ public class DAOGenericImp<T> implements DAOGeneric<T> {
       manager.getTransaction().commit();
       
     } catch (Exception e) {
-      manager.getTransaction().rollback();
-      throw new RuntimeException("Erro ao tentar alterar.", e);
+      e.printStackTrace();
+      //manager.getTransaction().rollback();
+      //throw new RuntimeException("Erro ao tentar alterar.", e);
     } finally {
       manager.close();
     }

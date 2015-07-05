@@ -7,9 +7,19 @@ public class Aluno extends Usuario {
   private String campus;
   
   private Integer periodo;
+  
+  private Integer isLider;
 
   public Aluno() {
     super();
+  }
+  
+  public Integer getIsLider() {
+    return isLider;
+  }
+
+  public void setIsLider(Integer isLider) {
+    this.isLider = isLider;
   }
 
   public String getCurso() {

@@ -38,9 +38,5 @@ public class RNProjeto {
   public List<Projeto> buscarPorSituacao() {
     return null;
   }
-  
-  public List<Projeto> buscarPorAvaliador() {
-    return null;
-  }
 
 }

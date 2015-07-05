@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -28,28 +27,22 @@ public class TBAdministrador implements Serializable {
   @Column(name="idusuario", unique = true, nullable = false)
   private Integer idusuario;
   
-  @Column(nullable=false)
-  private String nome;
-  
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.ALL)
   @PrimaryKeyJoinColumn
   private TBUsuario usuario;
   
   public Integer getIdusuario() {
     return idusuario;
   }
+  
   public void setIdusuario(Integer idusuario) {
     this.idusuario = idusuario;
   }
-  public String getNome() {
-    return nome;
-  }
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
+
   public TBUsuario getUsuario() {
     return usuario;
   }
+  
   public void setUsuario(TBUsuario usuario) {
     this.usuario = usuario;
   }
@@ -59,7 +52,6 @@ public class TBAdministrador implements Serializable {
     final int prime = 31;
     int result = 1;
     result = prime * result + ((idusuario == null) ? 0 : idusuario.hashCode());
-    result = prime * result + ((nome == null) ? 0 : nome.hashCode());
     result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
     return result;
   }
@@ -76,11 +68,6 @@ public class TBAdministrador implements Serializable {
       if (other.idusuario != null)
         return false;
     } else if (!idusuario.equals(other.idusuario))
-      return false;
-    if (nome == null) {
-      if (other.nome != null)
-        return false;
-    } else if (!nome.equals(other.nome))
       return false;
     if (usuario == null) {
       if (other.usuario != null)

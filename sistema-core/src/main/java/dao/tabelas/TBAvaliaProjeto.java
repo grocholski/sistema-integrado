@@ -23,7 +23,6 @@ public class TBAvaliaProjeto {
   @EmbeddedId
   private AvaliaProjetoId pk = new AvaliaProjetoId();
   
-  // pode ser nulo inicialmente
   @Column
   private BigDecimal nota;
   

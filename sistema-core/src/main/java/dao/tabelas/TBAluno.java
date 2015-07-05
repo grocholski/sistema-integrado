@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -28,19 +27,16 @@ public class TBAluno {
   @Column(name="idusuario", unique = true, nullable = false)
   private Integer idusuario;
   
-  @Column(nullable=false)
-  private String nome;
-  
-  @Column(nullable=false)
   private String curso;
   
-  @Column(nullable=false)
   private Integer periodo;
   
-  @Column(nullable=false)
   private String campus;
   
-  @OneToOne(fetch = FetchType.LAZY)
+  @Column(nullable=false)
+  private Integer isLider;
+  
+  @OneToOne
   @PrimaryKeyJoinColumn
   private TBUsuario usuario;
   
@@ -48,62 +44,78 @@ public class TBAluno {
    * Aluno pode ser lider de varios projetos. Mas durante a aplicacao
    * sera lider de um projeto ativo por vez.
    */
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "lider")
+  @OneToMany(mappedBy = "lider")
   private List<TBProjeto> projetosLider = new ArrayList<TBProjeto>(0);
   
   // remover???????????????
   // a relacao ja esta mantida em projeto
-  @ManyToMany(fetch = FetchType.LAZY, mappedBy = "membros")
+  @ManyToMany(mappedBy = "membros")
   private List<TBProjeto> projetosMembro = new ArrayList<TBProjeto>(0);
-
+  
   public Integer getIdusuario() {
     return idusuario;
   }
+  
   public void setIdusuario(Integer idusuario) {
     this.idusuario = idusuario;
   }
-  public String getNome() {
-    return nome;
+  
+  public Integer getIsLider() {
+    return isLider;
   }
-  public void setNome(String nome) {
-    this.nome = nome;
+  
+  public void setIsLider(Integer isLider) {
+    this.isLider = isLider;
   }
+  
   public String getCurso() {
     return curso;
   }
+  
   public void setCurso(String curso) {
     this.curso = curso;
   }
+  
   public Integer getPeriodo() {
     return periodo;
   }
+  
   public void setPeriodo(Integer periodo) {
     this.periodo = periodo;
   }
+  
   public String getCampus() {
     return campus;
   }
+  
   public void setCampus(String campus) {
     this.campus = campus;
   }
+  
   public TBUsuario getUsuario() {
     return usuario;
   }
+  
   public void setUsuario(TBUsuario usuario) {
     this.usuario = usuario;
   }
+  
   public List<TBProjeto> getProjetosLider() {
     return projetosLider;
   }
+  
   public void setProjetosLider(List<TBProjeto> projetosLider) {
     this.projetosLider = projetosLider;
   }
+  
   public List<TBProjeto> getProjetosMembro() {
     return projetosMembro;
   }
+  
   public void setProjetosMembro(List<TBProjeto> projetosMembro) {
     this.projetosMembro = projetosMembro;
   }
+  
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -111,7 +123,7 @@ public class TBAluno {
     result = prime * result + ((campus == null) ? 0 : campus.hashCode());
     result = prime * result + ((curso == null) ? 0 : curso.hashCode());
     result = prime * result + ((idusuario == null) ? 0 : idusuario.hashCode());
-    result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+    result = prime * result + ((isLider == null) ? 0 : isLider.hashCode());
     result = prime * result + ((periodo == null) ? 0 : periodo.hashCode());
     result = prime * result
         + ((projetosLider == null) ? 0 : projetosLider.hashCode());
@@ -120,6 +132,7 @@ public class TBAluno {
     result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
     return result;
   }
+  
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
@@ -144,10 +157,10 @@ public class TBAluno {
         return false;
     } else if (!idusuario.equals(other.idusuario))
       return false;
-    if (nome == null) {
-      if (other.nome != null)
+    if (isLider == null) {
+      if (other.isLider != null)
         return false;
-    } else if (!nome.equals(other.nome))
+    } else if (!isLider.equals(other.isLider))
       return false;
     if (periodo == null) {
       if (other.periodo != null)

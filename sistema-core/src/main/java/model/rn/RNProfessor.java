@@ -19,4 +19,13 @@ public class RNProfessor {
     TBProfessor tbProf = Conversor.toTBProfessor(prof);
     daoProf.alterar(tbProf);
   }
+  
+  public Professor buscarPorEmail(String email) {
+    Professor prof = null;
+    TBProfessor tbProf = daoProf.buscarPorEmail(email);
+    if (tbProf != null) {
+      prof = Conversor.toProfessor(tbProf);
+    }
+    return prof;
+  }
 }
